@@ -61,7 +61,7 @@ async function verifyEmail(token: any): Promise<unknown> {
       position: "top-center",
     });
   } else if (response.status == 201) {
-    toast.success("You are one amoung us!", {
+    toast.success("Now, You are one amoung us!", {
       position: "top-center",
     });
   }
