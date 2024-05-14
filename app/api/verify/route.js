@@ -7,6 +7,7 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const token = searchParams.get('token');
 
+    console.log(token)
     if (!token) {
       return new Response(JSON.stringify({ success: false, error: 'Missing verification token' }), {
         status: 400,
@@ -19,6 +20,7 @@ export async function GET(request) {
     // Find the user by verificationToken
     const user = await User.findOne({ verificationToken: token });
 
+    console.log(user)
     if (!user) {
       return new Response(null, {
         status: 302, // Temporary Redirect
