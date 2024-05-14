@@ -52,10 +52,10 @@ export async function GET(request) {
                   🙏 Thank you!
                 </p>
                 <h1 class="mb-6 text-4xl text-white font-bold lg:text-5xl">
-                  We won't forget you !
+                  Thanks for Signing up
                 </h1>
                 <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-400">
-                  You can now access all the features of our platform.
+                We won't forget you !
                 </p>
               </div>
               <div class="mt-auto"></div>

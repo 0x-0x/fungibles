@@ -1,6 +1,7 @@
 const generateEmailHTML = ({
   title,
   logoSrc,
+  webaddress,
   verificationToken,
   heading,
   description,
@@ -82,7 +83,7 @@ const generateEmailHTML = ({
         <img src="${logoSrc}" alt="${title}">
         <h1>${heading}</h1>
         <p>${description}</p>
-        <a href="http://localhost:3000/api/verify?token=${verificationToken}" class="button">${buttonText}</a>
+        <a href="${webaddress}?token=${verificationToken}" class="button">${buttonText}</a>
         <div class="info">
             <p>Created with love by ${companyInfo}.</p>
         </div>
