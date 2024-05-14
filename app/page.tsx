@@ -14,6 +14,8 @@ export default function Home() {
         loading: "Joining Waiting List",
         success: <b>Thanks for signing Up ❤️</b>,
         error: <b>Something went wrong!</b>,
+      },{
+        position: "bottom-center",
       });
     } catch (error) {
       console.error("Error signing up:", error);
@@ -85,11 +87,11 @@ async function saveSettings(email: any): Promise<unknown> {
 
   if (response.status == 301) {
     toast.success("You are already subscribed📨", {
-      position: "bottom-center",
+      position: "top-center",
     });
   } else {
     toast.success("Please check your email 📨", {
-      position: "bottom-center",
+      position: "top-center",
     });
   }
 
