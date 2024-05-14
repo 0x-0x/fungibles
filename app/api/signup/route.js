@@ -18,7 +18,7 @@ export async function POST(req) {
       const emailVerified = await User.findOne({ email, emailVerified: false });
       if (emailVerified) {
         await sendVerificationEmail(email, emailVerified.verificationToken);
-        return new Response(JSON.stringify({ success: true, data: emailVerified }), {
+        return new Response(JSON.stringify({ success: true, data: emailVerified.email }), {
           status: 201,
           headers: {
             "Content-Type": "application/json",
@@ -26,9 +26,9 @@ export async function POST(req) {
         });
       } else {
         return new Response(
-          JSON.stringify({ success: false, error: "Email already exists" }),
+          JSON.stringify({ success: true, data: "You are already Subscribed ❤️" }),
           {
-            status: 400,
+            status: 301,
             headers: {
               "Content-Type": "application/json",
             },

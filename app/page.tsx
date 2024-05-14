@@ -15,8 +15,17 @@ export default function Home() {
           loading: "Joining Waiting List",
           success: <b>Thanks for signing Up ❤️</b>,
           error: <b>Something went wrong!</b>,
-        })
-        .then();
+        }).then((response)=>{
+          if(response && response.status == 301){
+            toast.success("You already Subscribed 📨", {
+              position: "bottom-center",
+            });
+          }else{
+            toast.success("Please check your email 📨", {
+              position: "bottom-center",
+            });
+          }
+        });
     } catch (error) {
       console.error("Error signing up:", error);
     }
