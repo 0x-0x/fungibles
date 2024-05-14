@@ -1,18 +1,14 @@
 "use client";
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function EmailVerification() {
-  const searchParams = useSearchParams();
-  const [verificationStatus, setVerificationStatus] = useState("");
-
   const handleVerification = async () => {
-    const token = searchParams.get("token");
+    const queryParams = new URLSearchParams(window.location.search);
+    const token = queryParams.get("token");
     try {
-      verifyEmail(token).then(()=>{
+      verifyEmail(token).then(() => {
         setTimeout(() => {
-            window.location.assign('/');
+          window.location.assign("/");
         }, 1000);
       });
     } catch (error) {
@@ -64,7 +60,7 @@ async function verifyEmail(token: any): Promise<unknown> {
     toast.error("Invalid or expired verification token", {
       position: "top-center",
     });
-  } else if(response.status == 201){
+  } else if (response.status == 201) {
     toast.success("You are one amoung us!", {
       position: "top-center",
     });
