@@ -10,22 +10,11 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      toast
-        .promise(saveSettings(email), {
-          loading: "Joining Waiting List",
-          success: <b>Thanks for signing Up ❤️</b>,
-          error: <b>Something went wrong!</b>,
-        }).then((response)=>{
-          if(response && response.status == 301){
-            toast.success("You already Subscribed 📨", {
-              position: "bottom-center",
-            });
-          }else{
-            toast.success("Please check your email 📨", {
-              position: "bottom-center",
-            });
-          }
-        });
+      toast.promise(saveSettings(email), {
+        loading: "Joining Waiting List",
+        success: <b>Thanks for signing Up ❤️</b>,
+        error: <b>Something went wrong!</b>,
+      });
     } catch (error) {
       console.error("Error signing up:", error);
     }
@@ -93,6 +82,16 @@ async function saveSettings(email: any): Promise<unknown> {
     },
     body: JSON.stringify({ email }),
   });
+
+  if (response.status == 301) {
+    toast.success("You are already subscribed📨", {
+      position: "bottom-center",
+    });
+  } else {
+    toast.success("Please check your email 📨", {
+      position: "bottom-center",
+    });
+  }
 
   return response;
 }
